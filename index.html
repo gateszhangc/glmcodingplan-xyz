@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>GLM Coding Plan — AI Coding Powered by GLM-5.2 &amp; GLM-5-Turbo for Agents &amp; IDEs</title>
+  <meta name="description" content="GLM Coding Plan is a subscription plan specifically designed for AI coding. Powered by GLM-5.2 and GLM-5-Turbo with 1M context window, open-source SOTA coding capabilities. Works with Claude Code, Cursor, OpenCode, Cline, and 15+ coding agents."/>
+  <meta name="keywords" content="GLM Coding Plan, GLM-5.2, GLM-5-Turbo, GLM-4.7, Zhipu AI, AI coding, coding agent, Claude Code, Cursor, coding subscription, 1M context, open-source coding model"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://z.ai/subscribe"/>
+  <meta property="og:title" content="GLM Coding Plan — AI Coding Powered by GLM-5.2 &amp; GLM-5-Turbo"/>
+  <meta property="og:description" content="AI coding subscription plan with GLM-5.2, 1M context window, open-source SOTA. Works with Claude Code, Cursor, OpenCode, Cline, and 15+ coding agents."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="assets/logo.svg"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="GLM Coding Plan — AI Coding Powered by GLM-5.2 &amp; GLM-5-Turbo"/>
+  <meta name="twitter:description" content="AI coding subscription plan with GLM-5.2, 1M context window, open-source SOTA. Works with Claude Code, Cursor, OpenCode, Cline, and 15+ coding agents."/>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg"/>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --bg-card: #0f0f12;
+      --bg-hover: #18181b;
+      --border: #1e1e2a;
+      --text: #e5e5e5;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --accent: #6366f1;
+      --accent-glow: #818cf8;
+      --accent-dim: #4f46e5;
+      --green: #22c55e;
+      --radius: 12px;
+      --max-w: 960px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    }
+
+    a { color: var(--accent-glow); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 0; border-bottom: 1px solid var(--border);
+    }
+
+    .nav-brand { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 15px; }
+    .nav-brand img { width: 28px; height: 28px; border-radius: 6px; }
+    nav a { color: var(--text-muted); font-size: 14px; margin-left: 24px; }
+    nav .nav-cta { background: var(--accent); color: #fff; padding: 6px 14px; border-radius: 6px; font-weight: 600; font-size: 13px; }
+
+    .hero { padding: 80px 0 64px; text-align: center; }
+    .hero-logo { margin-bottom: 24px; }
+    .hero-logo img { max-width: 500px; width: 100%; height: auto; border-radius: var(--radius); }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(99, 102, 241, 0.12); color: var(--accent-glow);
+      padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 500; margin-bottom: 20px;
+      border: 1px solid rgba(99, 102, 241, 0.2);
+    }
+
+    .hero h1 { font-size: 40px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 12px; }
+    .hero h1 span { color: var(--accent-glow); }
+    .hero .tagline { font-size: 18px; color: var(--text-muted); max-width: 680px; margin: 0 auto 32px; }
+
+    .hero-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 12px 28px; border-radius: 8px; font-weight: 600; font-size: 15px;
+      cursor: pointer; transition: all 0.15s; border: none;
+    }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: var(--accent-dim); text-decoration: none; }
+    .btn-secondary { background: var(--bg-card); color: var(--text); border: 1px solid var(--border); }
+    .btn-secondary:hover { background: var(--bg-hover); text-decoration: none; }
+
+    section { padding: 64px 0; }
+    section + section { border-top: 1px solid var(--border); }
+
+    .section-label {
+      font-size: 12px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--text-dim); margin-bottom: 8px;
+    }
+    .section-title { font-size: 28px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 12px; }
+    .section-sub { font-size: 16px; color: var(--text-muted); max-width: 600px; margin-bottom: 40px; }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+
+    .card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 24px; transition: border-color 0.15s;
+    }
+    .card:hover { border-color: #333; }
+    .card h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+    .card p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+    .card-icon { font-size: 24px; margin-bottom: 12px; display: block; }
+
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 40px; }
+
+    .stat {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 20px; text-align: center;
+    }
+    .stat-value { font-size: 25px; font-weight: 800; letter-spacing: -0.02em; line-height: 1; }
+    .stat-value.accent { color: var(--accent-glow); }
+    .stat-value.green { color: var(--green); }
+    .stat-label { font-size: 13px; color: var(--text-muted); margin-top: 6px; }
+    .stat-sub { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
+
+    .steps { display: grid; gap: 16px; }
+
+    .step {
+      display: flex; gap: 16px; align-items: flex-start;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 20px 24px;
+    }
+    .step-num {
+      font-size: 12px; font-weight: 700; color: var(--accent-glow);
+      background: rgba(99, 102, 241, 0.12); padding: 4px 10px; border-radius: 6px; white-space: nowrap;
+    }
+    .step-content h3 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+    .step-content p { font-size: 14px; color: var(--text-muted); }
+    .step-content code { background: rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 4px; font-size: 13px; font-family: ui-monospace, monospace; }
+
+    .faq-list { display: grid; gap: 16px; }
+    .faq-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 24px; }
+    .faq-item h3 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+    .faq-item p { font-size: 14px; color: var(--text-muted); }
+
+    .pricing { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+    .plan {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 24px; text-align: center; position: relative;
+    }
+    .plan.popular { border-color: var(--accent); box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.3); }
+    .plan-badge {
+      position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+      background: var(--accent); color: #fff; padding: 2px 12px; border-radius: 10px;
+      font-size: 11px; font-weight: 600; white-space: nowrap;
+    }
+    .plan-name { font-size: 15px; font-weight: 600; }
+    .plan-price { font-size: 20px; font-weight: 700; color: var(--accent-glow); margin: 6px 0 2px; }
+    .plan-price span { font-size: 13px; font-weight: 400; color: var(--text-muted); }
+    .plan-detail { font-size: 13px; color: var(--text-dim); margin-bottom: 12px; }
+    .plan-features { list-style: none; margin: 12px 0; text-align: left; }
+    .plan-features li { font-size: 13px; color: var(--text-muted); padding: 4px 0; }
+    .plan-features li::before { content: "✓ "; color: var(--green); }
+
+    .tools-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .tool-item {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 8px; padding: 14px; text-align: center;
+    }
+    .tool-item span { font-size: 13px; font-weight: 500; color: var(--text-muted); }
+
+    .code-block {
+      background: #0d0d0d; border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 20px 24px;
+      font-family: ui-monospace, monospace; font-size: 13px; line-height: 1.7; overflow-x: auto; margin: 16px 0;
+    }
+    .code-block .comment { color: var(--text-dim); }
+    .code-block .tag { color: var(--accent-glow); }
+
+    footer { border-top: 1px solid var(--border); padding: 32px 0; text-align: center; color: var(--text-dim); font-size: 13px; }
+    footer a { color: var(--text-muted); }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 28px; }
+      .grid-2, .grid-3, .pricing, .tools-grid { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      nav a { margin-left: 12px; font-size: 13px; }
+      .hero-logo img { max-width: 340px; }
+      .tools-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <nav>
+      <div class="nav-brand">
+        <img src="assets/logo-mark.svg" alt="GLM mark"/>
+        GLM Coding Plan
+      </div>
+      <div>
+        <a href="#overview">Overview</a>
+        <a href="#models">Models</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#tools">Tools</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://mirofish.my/" class="nav-cta">Subscribe</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-badge">✦ Powered by GLM-5.2 · 1M context · Open-source SOTA</div>
+      <div class="hero-logo">
+        <img src="assets/logo.svg" alt="GLM Coding Plan — AI Coding"/>
+      </div>
+      <h1>GLM Coding Plan — <span>AI Coding for Agents &amp; IDEs</span></h1>
+      <p class="tagline">
+        A subscription plan specifically designed for AI coding. Powered by GLM-5.2 and GLM-5-Turbo with a 1M solid context window. Works with Claude Code, Cursor, OpenCode, Cline, and 15+ coding agents.
+      </p>
+      <div class="hero-buttons">
+        <a href="https://mirofish.my/" class="btn btn-primary">Subscribe Now</a>
+        <a href="#overview" class="btn btn-secondary">Learn More</a>
+      </div>
+    </section>
+
+    <section id="overview">
+      <p class="section-label">Overview</p>
+      <h2 class="section-title">Intelligent, fast, stable coding — designed for AI agents</h2>
+      <p class="section-sub">
+        GLM Coding Plan is purpose-built for AI-powered coding. A small investment brings you production-grade coding assistance across every major coding agent platform.
+      </p>
+
+      <div class="grid-2">
+        <div class="card">
+          <span class="card-icon">🧠</span>
+          <h3>Natural Language Programming</h3>
+          <p>Describe requirements through conversation. GLM auto-generates plans, writes code, debugs issues, and ensures everything runs correctly — all from natural language.</p>
+        </div>
+        <div class="card">
+          <span class="card-icon">🔍</span>
+          <h3>Code Debugging &amp; Fixing</h3>
+          <p>Input error descriptions and GLM will auto-analyze your entire codebase, locate the root cause, and provide working fixes with explanations.</p>
+        </div>
+        <div class="card">
+          <span class="card-icon">💬</span>
+          <h3>Codebase Q&amp;A</h3>
+          <p>Ask questions about your codebase with global understanding. GLM's 1M context window means it can comprehend your entire project at once.</p>
+        </div>
+        <div class="card">
+          <span class="card-icon">⚡</span>
+          <h3>Automated Task Processing</h3>
+          <p>One-click lint fixing, merge conflict resolution, release notes generation, and more. Let GLM handle the tedious parts of development.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="models">
+      <p class="section-label">Models</p>
+      <h2 class="section-title">Three tiers, one subscription</h2>
+      <p class="section-sub">
+        Every plan includes access to all models. Use GLM-5.2 for complex reasoning, GLM-5-Turbo for speed, and GLM-4.7 for everyday tasks.
+      </p>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-value accent">GLM-5.2</div>
+          <div class="stat-label">Flagship model</div>
+          <div class="stat-sub">1M context · 128K output</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" style="color: #22c55e;">GLM-5-Turbo</div>
+          <div class="stat-label">High-performance</div>
+          <div class="stat-sub">Fast inference variant</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" style="color: #fcd34d;">GLM-4.7</div>
+          <div class="stat-label">Standard tier</div>
+          <div class="stat-sub">Sonnet-level everyday</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value green">#1</div>
+          <div class="stat-label">Frontend Code Arena</div>
+          <div class="stat-sub">Blind eval ranked #1 globally</div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card" style="border-left: 3px solid var(--accent);">
+          <h3>GLM-5.2 — Flagship Coding Model</h3>
+          <p style="margin-top: 12px;">1M solid context window with true long-context usability for project-level engineering. Long-horizon task execution that handles complex multi-step operations stably.</p>
+          <p style="margin-top: 8px;">Production-grade standards compliance — better adherence to code style, architecture boundaries, and dependency constraints. Supports mobile development, WeChat mini programs, and coding-to-video via Remotion.</p>
+          <p style="margin-top: 8px;">Benchmarks: Beats GPT-5.5 on FrontierSWE, close to Claude Opus 4.8. Highest-ranked open-source model globally. Will be open-sourced under MIT license.</p>
+        </div>
+        <div class="card" style="border-left: 3px solid #22c55e;">
+          <h3>GLM-5-Turbo — Speed-First</h3>
+          <p style="margin-top: 12px;">High-performance variant of GLM-5 designed for faster inference while maintaining strong coding quality. Ideal for quick iterations and real-time coding assistance.</p>
+        </div>
+      </div>
+
+      <h3 style="margin-top: 32px; margin-bottom: 16px; font-size: 17px; font-weight: 600;">Exclusive MCP Tools Included</h3>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Vision Understanding MCP</h3>
+          <p>Analyze UI designs, diagrams, and screenshots via GLM-4.6V vision model.</p>
+        </div>
+        <div class="card">
+          <h3>Web Search MCP</h3>
+          <p>Real-time technical information retrieval from the web during coding.</p>
+        </div>
+        <div class="card">
+          <h3>Web Reader MCP</h3>
+          <p>Fetch and parse web pages for documentation and reference material.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <p class="section-label">Pricing</p>
+      <h2 class="section-title">Plans for every scale</h2>
+      <p class="section-sub">
+        From individual developers to teams. All plans include access to GLM-5.2, GLM-5-Turbo, and GLM-4.7 across all supported coding agents.
+      </p>
+
+      <div class="pricing">
+        <div class="plan">
+          <div class="plan-name">Lite</div>
+          <div class="plan-price">$10 <span>/ month</span></div>
+          <div class="plan-detail">~80 prompts per 5 hours</div>
+          <ul class="plan-features">
+            <li>All models included</li>
+            <li>GLM-5.2, 5-Turbo, 4.7</li>
+            <li>~400 prompts / week</li>
+            <li>All MCP tools</li>
+          </ul>
+        </div>
+        <div class="plan popular">
+          <div class="plan-badge">Popular</div>
+          <div class="plan-name">Pro</div>
+          <div class="plan-price">$20 <span>/ month</span></div>
+          <div class="plan-detail">~400 prompts per 5 hours</div>
+          <ul class="plan-features">
+            <li>All models included</li>
+            <li>Priority resources</li>
+            <li>~2,000 prompts / week</li>
+            <li>All MCP tools</li>
+          </ul>
+        </div>
+        <div class="plan">
+          <div class="plan-name">Max</div>
+          <div class="plan-price">$80 <span>/ month</span></div>
+          <div class="plan-detail">~1,600 prompts per 5 hours</div>
+          <ul class="plan-features">
+            <li>All models included</li>
+            <li>Highest priority resources</li>
+            <li>~8,000 prompts / week</li>
+            <li>All MCP tools</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top: 20px; text-align: center;">
+        <h3 style="margin-bottom: 4px;">Team Plans Available</h3>
+        <p style="font-size: 14px; color: var(--text-muted);">Team Standard and Team Advanced with centralized billing, user management, and data privacy. Your data is not used for training.</p>
+      </div>
+    </section>
+
+    <section id="tools">
+      <p class="section-label">Supported Tools</p>
+      <h2 class="section-title">Works with the tools you already use</h2>
+      <p class="section-sub">
+        OpenAI-compatible and Anthropic-compatible API endpoints let you use GLM models in your existing workflow.
+      </p>
+
+      <div class="tools-grid">
+        <div class="tool-item"><span>Claude Code</span></div>
+        <div class="tool-item"><span>Cursor</span></div>
+        <div class="tool-item"><span>OpenCode</span></div>
+        <div class="tool-item"><span>Cline</span></div>
+        <div class="tool-item"><span>Roo Code</span></div>
+        <div class="tool-item"><span>Kilo Code</span></div>
+        <div class="tool-item"><span>Crush</span></div>
+        <div class="tool-item"><span>Goose</span></div>
+        <div class="tool-item"><span>Droid</span></div>
+        <div class="tool-item"><span>TRAE</span></div>
+        <div class="tool-item"><span>CodeBuddy</span></div>
+        <div class="tool-item"><span>Lingma</span></div>
+        <div class="tool-item"><span>Qoder</span></div>
+        <div class="tool-item"><span>MonkeyCode</span></div>
+        <div class="tool-item"><span>OpenClaw</span></div>
+        <div class="tool-item"><span>Cherry Studio</span></div>
+      </div>
+
+      <div class="code-block" style="margin-top: 20px;">
+        <span class="comment">// OpenAI-compatible endpoint</span><br/>
+        <span class="tag">https://open.bigmodel.cn/api/coding/paas/v4</span><br/><br/>
+        <span class="comment">// Anthropic-compatible endpoint</span><br/>
+        <span class="tag">https://open.bigmodel.cn/api/anthropic</span>
+      </div>
+    </section>
+
+    <section id="faq">
+      <p class="section-label">FAQ</p>
+      <h2 class="section-title">Common questions about GLM Coding Plan</h2>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <h3>What is GLM Coding Plan?</h3>
+          <p>GLM Coding Plan is a subscription plan specifically designed for AI coding. Powered by GLM-5.2 and GLM-5-Turbo, it provides intelligent, fast, and stable coding assistance across 15+ coding agent platforms and IDEs.</p>
+        </div>
+        <div class="faq-item">
+          <h3>What models are included?</h3>
+          <p>Every plan includes access to GLM-5.2 (flagship, 1M context, open-source SOTA), GLM-5-Turbo (high-performance variant), and GLM-4.7 (standard tier for everyday tasks).</p>
+        </div>
+        <div class="faq-item">
+          <h3>What coding agents are supported?</h3>
+          <p>Claude Code, Cursor, OpenCode, Cline, Roo Code, Kilo Code, Crush, Goose, Droid, TRAE, CodeBuddy, Lingma, Qoder, MonkeyCode, OpenClaw, Cherry Studio, and more via OpenAI-compatible or Anthropic-compatible API endpoints.</p>
+        </div>
+        <div class="faq-item">
+          <h3>What is the context window?</h3>
+          <p>GLM-5.2 provides a 1 million token solid context window with 128K max output tokens. It is designed for true long-context usability — project-level engineering, full codebase understanding, and complex multi-step task execution.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Is GLM-5.2 open-source?</h3>
+          <p>Yes. GLM-5.2 will be open-sourced under the MIT license with no regional restrictions, making it the highest-ranked open-source coding model globally.</p>
+        </div>
+        <div class="faq-item">
+          <h3>How does it compare to other coding models?</h3>
+          <p>GLM-5.2 beats GPT-5.5 on FrontierSWE by ~1% and is within ~1% of Claude Opus 4.8. It is ranked #1 globally on Frontend Code Arena (blind eval). It is the highest-ranked open-source model.</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>GLM Coding Plan — AI Coding Powered by GLM-5.2 &amp; GLM-5-Turbo for Agents &amp; IDEs</p>
+      <p style="margin-top: 4px;">
+        <a href="https://mirofish.my/">Subscribe</a> &middot;
+        <a href="https://docs.bigmodel.cn/cn/coding-plan">Documentation</a> &middot;
+        <a href="https://z.ai/subscribe">Official Site</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

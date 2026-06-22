@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 120" fill="none">
+  <rect width="500" height="120" rx="16" fill="#0a0a0a"/>
+  <!-- Hexagon mark -->
+  <polygon points="52,28 76,28 88,52 76,76 52,76 40,52" fill="none" stroke="#6366f1" stroke-width="3"/>
+  <polygon points="52,36 70,36 78,52 70,68 52,68 44,52" fill="none" stroke="#818cf8" stroke-width="2" opacity="0.5"/>
+  <text x="46" y="60" font-family="ui-monospace, monospace" font-size="20" font-weight="700" fill="#c7d2fe">&lt;/&gt;</text>
+  <!-- Code line decoration -->
+  <text x="106" y="48" font-family="ui-monospace, monospace" font-size="13" fill="#a1a1aa" font-weight="500">// intelligent, fast, stable coding</text>
+  <text x="106" y="72" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="700" fill="#f1f5f9" letter-spacing="-0.01em">GLM Coding Plan</text>
+  <text x="106" y="92" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#64748b">Powered by GLM-5.2 · 1M context · Open-source SOTA</text>
+</svg>

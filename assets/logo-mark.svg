@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <rect width="128" height="128" rx="24" fill="#0a0a0a"/>
+  <!-- GLM hexagon -->
+  <polygon points="64,18 98,38 98,78 64,98 30,78 30,38" fill="none" stroke="#6366f1" stroke-width="3"/>
+  <polygon points="64,26 88,40 88,68 64,82 40,68 40,40" fill="none" stroke="#818cf8" stroke-width="2" opacity="0.6"/>
+  <!-- Code brackets -->
+  <text x="44" y="68" font-family="ui-monospace, monospace" font-size="28" font-weight="700" fill="#c7d2fe">&lt;/&gt;</text>
+  <!-- Dot -->
+  <circle cx="84" cy="100" r="3" fill="#22c55e"/>
+</svg>
